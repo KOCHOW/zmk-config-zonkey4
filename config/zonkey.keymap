@@ -87,7 +87,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "VIM_JJ";
             #binding-cells = <0>;
-            bindings = <&kp J>, <&tog 7>;
+            bindings = <&kp J>, <&to 7>;
         };
 
         vim_gg: vim_gg {
@@ -100,7 +100,7 @@
         vim_G: vim_G {
             compatible = "zmk,behavior-mod-morph";
             label = "VIM_G";
-            bindings = <&vim_G>, <&kp END>;
+            bindings = <&vim_gg>, <&kp END>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
