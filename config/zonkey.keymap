@@ -64,6 +64,47 @@
 
             tap-ms = <20>;
         };
+
+        vim_U: vim_U {
+            compatible = "zmk,behavior-mod-morph";
+            label = "VIM_U";
+            #binding-cells = <0>;
+            bindings = <&kp LC(Z)>, <&kp PAGE_UP>;
+
+            mods = <(MOD_LCTL)>;
+        };
+
+        vim_D: vim_D {
+            compatible = "zmk,behavior-mod-morph";
+            label = "VIM_D";
+            #binding-cells = <0>;
+            bindings = <&kp LC(X)>, <&kp PAGE_DOWN>;
+
+            mods = <(MOD_LCTL)>;
+        };
+
+        vim_jj: vim_jj {
+            compatible = "zmk,behavior-tap-dance";
+            label = "VIM_JJ";
+            #binding-cells = <0>;
+            bindings = <&kp J>, <&tog 7>;
+        };
+
+        vim_gg: vim_gg {
+            compatible = "zmk,behavior-tap-dance";
+            label = "VIM_GG";
+            #binding-cells = <0>;
+            bindings = <&none>, <&kp HOME>;
+        };
+
+        vim_G: vim_G {
+            compatible = "zmk,behavior-mod-morph";
+            label = "VIM_G";
+            bindings = <&vim_G>, <&kp END>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
     };
 
     keymap {
@@ -78,7 +119,7 @@
 
             bindings = <
 &kp Q           &kp W         &kp E         &kp R             &kp T                                              &kp Y          &kp U      &kp I      &kp O    &kp P
-&kp A           &kp S         &kp D         &kp F             &kp G        &kp LS(LG(KP_NUMBER_4))    &kp B      &kp H          &kp J      &kp K      &kp L    &kp SQT
+&kp A           &kp S         &kp D         &kp F             &kp G        &kp LS(LG(KP_NUMBER_4))    &kp B      &kp H          &vim_jj    &kp K      &kp L    &kp SQT
 &kp LEFT_SHIFT  &kp Z         &kp X         &lt 6 C           &lt 5 V      &lt 4 B                    &kp MINUS  &kp N          &kp M      &kp COMMA  &kp DOT  &kp SLASH
 &kp LCTRL       &kp LEFT_WIN  &kp LEFT_ALT  &lt 3 INT_HENKAN  &lt 2 SPACE  &lt 1 LA(GRAVE)                       &kp BACKSPACE  &kp ENTER                                 &kp DEL
             >;
@@ -177,6 +218,17 @@
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans    &trans    &trans    &trans
 &trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans                                &trans
+            >;
+
+            sensor-bindings = <&scroll_up_down>;
+        };
+
+        layer_7 {
+            bindings = <
+&trans  &trans  &trans      &trans  &trans                    &kp LC(C)       &vim_U          &tog 0        &trans           &kp LC(V)
+&trans  &trans  &vim_D      &trans  &vim_G  &trans    &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW  &trans
+&trans  &trans  &kp DELETE  &trans  &trans  &trans    &trans  &mkp LCLK       &mkp MCLK       &mkp RCLK     &trans           &trans
+&trans  &trans  &trans      &trans  &trans  &trans            &trans          &trans                                                    &trans
             >;
 
             sensor-bindings = <&scroll_up_down>;
