@@ -87,7 +87,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "VIM_JJ";
             #binding-cells = <0>;
-            bindings = <&kp J>, <&tog 7>;
+            bindings = <&kp J>, <&tog 1>;
         };
 
         vim_gg: vim_gg {
@@ -110,7 +110,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "VIM_ESC";
             #binding-cells = <0>;
-            bindings = <&lt 5 ESC>, <&to 7>;
+            bindings = <&lt 6 ESC>, <&to 1>;
         };
     };
 
@@ -127,8 +127,19 @@
             bindings = <
 &kp Q           &kp W         &kp E         &kp R             &kp T                                              &kp Y          &kp U      &kp I      &kp O    &kp P
 &kp A           &kp S         &kp D         &kp F             &kp G        &kp LS(LG(KP_NUMBER_4))    &kp B      &kp H          &vim_jj    &kp K      &kp L    &kp SQT
-&kp LEFT_SHIFT  &kp Z         &kp X         &lt 6 C           &lt 5 V      &lt 4 B                    &kp MINUS  &kp N          &kp M      &kp COMMA  &kp DOT  &kp SLASH
-&kp LCTRL       &kp LEFT_WIN  &kp LEFT_ALT  &lt 3 INT_HENKAN  &lt 2 SPACE  &lt 1 LA(GRAVE)                       &kp BACKSPACE  &kp ENTER                                 &kp ESCAPE
+&kp LEFT_SHIFT  &kp Z         &kp X         &lt 7 C           &lt 6 V      &lt 5 B                    &kp MINUS  &kp N          &kp M      &kp COMMA  &kp DOT  &kp SLASH
+&kp LCTRL       &kp LEFT_WIN  &kp LEFT_ALT  &lt 4 INT_HENKAN  &lt 3 SPACE  &lt 2 LA(GRAVE)                       &kp BACKSPACE  &kp ENTER                                 &kp ESCAPE
+            >;
+
+            sensor-bindings = <&scroll_up_down>;
+        };
+
+        vim_normal_layer {
+            bindings = <
+&trans   &trans  &trans      &trans  &trans                    &kp LC(C)       &vim_U          &tog 1        &trans           &kp LC(V)
+&kp TAB  &trans  &vim_D      &trans  &vim_G  &trans    &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW  &trans
+&trans   &trans  &kp DELETE  &trans  &trans  &trans    &trans  &mkp LCLK       &mkp MCLK       &mkp RCLK     &trans           &kp LC(F)
+&trans   &trans  &trans      &trans  &trans  &trans            &trans          &trans                                                    &lt 6 ESCAPE
             >;
 
             sensor-bindings = <&scroll_up_down>;
@@ -145,7 +156,7 @@
 &kp CAPSLOCK    &kp GRAVE     &trans        &trans            &trans                                          &trans         &trans         &kp MINUS         &kp EQUAL          &kp DEL
 &kp TAB         &trans        &trans        &trans            &trans       &trans                &kp JP_EISU  &trans         &trans         &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp BACKSLASH
 &kp LEFT_SHIFT  &trans        &trans        &trans            &trans       &trans                &trans       &kp JP_KANA    &kp SEMICOLON  &kp SQT           &kp RETURN         &kp RET
-&mt LCTL ESC    &kp LEFT_WIN  &kp LEFT_ALT  &lt 3 INT_HENKAN  &lt 2 SPACE  &lt 1 INT_MUHENKAN                 &kp BACKSPACE  &kp ENTER                                                          &kp DEL
+&mt LCTL ESC    &kp LEFT_WIN  &kp LEFT_ALT  &lt 4 INT_HENKAN  &lt 3 SPACE  &lt 2 INT_MUHENKAN                 &kp BACKSPACE  &kp ENTER                                                          &kp DEL
             >;
 
             sensor-bindings = <&scroll_up_down>;
@@ -162,7 +173,7 @@
 &kp N1          &kp N2        &kp N3        &kp N4            &kp N5                                     &kp N6          &kp N7          &kp N8        &kp N9           &kp N0
 &trans          &trans        &trans        &trans            &trans       &trans                &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW  &trans
 &kp LEFT_SHIFT  &trans        &trans        &trans            &trans       &trans                &trans  &trans          &trans          &trans        &trans           &trans
-&kp LCTRL       &kp LEFT_WIN  &kp LEFT_ALT  &lt 3 INT_HENKAN  &lt 2 SPACE  &lt 1 INT_MUHENKAN            &kp BACKSPACE   &kp ENTER                                              &kp DEL
+&kp LCTRL       &kp LEFT_WIN  &kp LEFT_ALT  &lt 4 INT_HENKAN  &lt 3 SPACE  &lt 2 INT_MUHENKAN            &kp BACKSPACE   &kp ENTER                                              &kp DEL
             >;
 
             sensor-bindings = <&scroll_up_down>;
@@ -179,7 +190,7 @@
 &kp F1          &kp F2        &kp F3        &kp F4            &kp F5                                     &kp F6         &kp F7     &kp F8  &kp F9  &kp F10
 &kp F11         &kp F12       &trans        &trans            &trans       &trans                &trans  &trans         &trans     &trans  &trans  &trans
 &kp LEFT_SHIFT  &trans        &trans        &trans            &trans       &trans                &trans  &trans         &trans     &trans  &trans  &trans
-&kp LCTRL       &kp LEFT_WIN  &kp LEFT_ALT  &lt 3 INT_HENKAN  &lt 2 SPACE  &lt 1 INT_MUHENKAN            &kp BACKSPACE  &kp ENTER                           &kp DEL
+&kp LCTRL       &kp LEFT_WIN  &kp LEFT_ALT  &lt 4 INT_HENKAN  &lt 3 SPACE  &lt 2 INT_MUHENKAN            &kp BACKSPACE  &kp ENTER                           &kp DEL
             >;
 
             sensor-bindings = <&scroll_up_down>;
@@ -225,17 +236,6 @@
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans    &trans    &trans    &trans
 &trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans                                &trans
-            >;
-
-            sensor-bindings = <&scroll_up_down>;
-        };
-
-        layer_7 {
-            bindings = <
-&trans   &trans  &trans      &trans  &trans                    &kp LC(C)       &vim_U          &tog 7        &trans           &kp LC(V)
-&kp TAB  &trans  &vim_D      &trans  &vim_G  &trans    &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW  &trans
-&trans   &trans  &kp DELETE  &trans  &trans  &trans    &trans  &mkp LCLK       &mkp MCLK       &mkp RCLK     &trans           &kp LC(F)
-&trans   &trans  &trans      &trans  &trans  &trans            &trans          &trans                                                    &lt 5 ESCAPE
             >;
 
             sensor-bindings = <&scroll_up_down>;
